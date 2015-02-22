@@ -14,9 +14,7 @@ func (d *Data) IsBetter(id1, id2 int) bool {
 
 
 func main() {
-   r := rand.New(rand.NewSource(time.Now().UnixNano()))
-   K := 5
-   N := 15
+   K, N, r := 5, 15, rand.New(rand.NewSource(time.Now().UnixNano()))
 
    h := topk.NewHeap(&Data{}, K)
 
