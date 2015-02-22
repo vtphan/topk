@@ -46,7 +46,8 @@ Return the heap, which is a slice of integer-value IDs.
 ```go
 func (h *Heap) Pop() int
 ```
-Return the ID of the worst item among the top K items that are being kept.
+Delete and return the ID of the worst item among the top K items that are being
+kept.
 
 #### func (*Heap) Push
 

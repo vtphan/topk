@@ -60,7 +60,7 @@ func (h *Heap) Push(id int) {
    }
 }
 
-// Return the ID of the worst item among the top K items that are being kept.
+// Delete and return the ID of the worst item among the top K items that are being kept.
 func (h *Heap) Pop() int{
    if h.size == 0 {
       panic("Popping an empty heap.")
