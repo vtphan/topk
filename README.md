@@ -1,5 +1,5 @@
 # topk
-
+--
     import "github.com/vtphan/topk"
 
 Author: Vinhthuy Phan, 2015.
@@ -15,57 +15,67 @@ item IDs to provide the meaning of "best", by defining a boolean function
 (IsBetter) that takes as inputs the IDs of two items and returns true if the
 first item is better than the second item.
 
+Complexity: O(N log K), which is faster than O(Nk) with a naive implementation.
+
 ## Usage
 
 #### type Heap
 
-    type Heap struct {
-    }
-
+```go
+type Heap struct {
+}
+```
 
 
 #### func  NewHeap
 
-    func NewHeap(data_type HeapData, capacity int) *Heap
-
+```go
+func NewHeap(data_type HeapData, capacity int) *Heap
+```
 Return a new heap with given capacity.
 
 #### func (*Heap) Get
 
-    func (h *Heap) Get() []int
-
+```go
+func (h *Heap) Get() []int
+```
 Return the heap, which is a slice of integer-value IDs.
 
 #### func (*Heap) Pop
 
-    func (h *Heap) Pop() int
-
+```go
+func (h *Heap) Pop() int
+```
 Return the ID of the worst item among the top K items that are being kept.
 
 #### func (*Heap) Push
 
-    func (h *Heap) Push(id int)
-
+```go
+func (h *Heap) Push(id int)
+```
 Push the integer-value ID of a new item into the heap.
 
 #### func (*Heap) Show
 
-    func (h *Heap) Show()
-
+```go
+func (h *Heap) Show()
+```
 Show the heap (for debugging purporses.)
 
 #### func (*Heap) Size
 
-    func (h *Heap) Size() int
-
+```go
+func (h *Heap) Size() int
+```
 Return the current size of the heap.
 
 #### type HeapData
 
-    type HeapData interface {
-    	IsBetter(id1, id2 int) bool
-    }
-
+```go
+type HeapData interface {
+	IsBetter(id1, id2 int) bool
+}
+```
 
 Users must implement an interface for the data type. This implementation
 includes a function IsBetter that takes as input the IDs of two data items and
