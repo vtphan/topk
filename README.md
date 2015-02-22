@@ -6,7 +6,7 @@ Author: Vinhthuy Phan, 2015.
 
 topk keeps track of the best K items among N items, which are sequentially
 processed. This is done by sequentially inserting the N items into a heap of
-capacity K. After these insertions, the contain of the heap (which can be
+capacity K. After these insertions, the content of the heap (which can be
 obtained by Get()) is the best K items among the N items.
 
 The heap does not store the items entirely. It only stores integer-value IDs of
