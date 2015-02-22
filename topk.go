@@ -10,6 +10,8 @@ The heap does not store the items entirely.  It only stores integer-value IDs of
 Through the implementation of the interface HeapData, users can use item IDs to provide
 the meaning of "best", by defining a boolean function (IsBetter) that takes as inputs
 the IDs of two items and returns true if the first item is better than the second item.
+
+Complexity: O(N log K), which is faster than O(Nk) with a naive implementation.
 */
 package topk
 
