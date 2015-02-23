@@ -34,6 +34,14 @@ func NewHeap(data_type HeapData, capacity int) *Heap
 ```
 Return a new heap with given capacity.
 
+#### func (*Heap) AllowIndistinctItems
+
+```go
+func (h *Heap) AllowIndistinctItems()
+```
+By default, the heap keeps only the top K distinct items. Call this method to
+allow indistinct items.
+
 #### func (*Heap) Get
 
 ```go
