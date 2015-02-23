@@ -17,10 +17,9 @@ func main() {
    K, N, r := 5, 15, rand.New(rand.NewSource(time.Now().UnixNano()))
 
    h := topk.NewHeap(&Data{}, K)
-
    fmt.Println("Inserting random numbers into the queue")
    for i:=0; i<N; i++ {
-      x := r.Intn(1000)
+      x := r.Intn(20)
       h.Push(x)
       fmt.Print("Insert ", x)
       h.Show()

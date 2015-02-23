@@ -32,6 +32,8 @@ type Heap struct {
    capacity int
    size int
    data_type HeapData
+   distinct_id bool
+   items_map map[int]bool
 }
 
 // Return a new heap with given capacity.
@@ -39,12 +41,19 @@ func NewHeap(data_type HeapData, capacity int) *Heap {
    if capacity<=0 {
       panic("queue capacity must be larger than 0.")
    }
-   return &Heap{make([]int, capacity), capacity, 0, data_type}
+   return &Heap{make([]int, capacity), capacity, 0, data_type, true, make(map[int]bool)}
 }
 
 // Push the integer-value ID of a new item into the heap.
 func (h *Heap) Push(id int) {
    if h.size < h.capacity {
+      if h.distinct_id {
+         _, exist := h.items_map[id]
+         if exist {
+            return
+         }
+      }
+      h.items_map[id] = true
       h.items[h.size] = id
       h.size++
       i := h.size - 1
@@ -55,6 +64,13 @@ func (h *Heap) Push(id int) {
          p = (p-1)/2
       }
    } else if h.data_type.IsBetter(id, h.items[0]) {
+      if h.distinct_id {
+         _, exist := h.items_map[id]
+         if exist {
+            return
+         }
+      }
+      h.items_map[id] = true
       h.items[0] = id
       h.percolate_down(0)
    }
@@ -96,6 +112,12 @@ func (h *Heap) percolate_down(i int) {
 // Return the heap, which is a slice of integer-value IDs.
 func (h *Heap) Get() []int {
    return h.items[0:h.size]
+}
+
+// By default, the heap keeps only the top K distinct items.
+// Call this method to allow indistinct items.
+func (h *Heap) AllowIndistinctItems() {
+   h.distinct_id = false
 }
 
 // Show the heap (for debugging purporses.)
